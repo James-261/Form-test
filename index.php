@@ -23,6 +23,7 @@ try {
   }
 
   $name = $_POST["name"];
+  $newname = $_POST["newname"];
   $sql_delete_all = "DELETE FROM Names";
 
   if (isset($_POST['delete_all'])) {
@@ -34,8 +35,8 @@ try {
   }
 
   if (isset($_POST['delete'])) {
-    if ($_POST['name'] == '') {
-      throw new Exception('Please enter a name');
+    if ($_POST['selectname'] == '') {
+      throw new Exception('Please select a name');
     }
 
     if (! $error) {
@@ -51,6 +52,29 @@ try {
         }
       } else {
         throw new Exception('Name Not In Database');
+      }
+    }
+  }
+
+  if (isset($_POST['update'])) {
+    if ($_POST['newname'] == '') {
+      throw new Exception('Please enter a name');
+    }
+
+    if (! $error) {
+      if (nameAlreadyExists($conn, $newname)) {
+          throw new Exception('Name Already In Database');
+      } else {
+        $sql_update = sprintf(
+          "UPDATE Names SET Name=('$newname') WHERE Name='$name'"
+        );
+          if ($conn->query($sql_update) === TRUE) {
+                $successful = true;
+            } else {
+                throw new Exception("Error: " . $sql_update . "<br>" . $conn->error);
+
+            }
+
       }
     }
   }
@@ -121,26 +145,26 @@ $prettyTime = date("H:i");
       <form action="index.php" method="post">
           Name: <input type="text" name="name" value="<?= $name ?>">
           <button name="create" type="submit">Create</button>
-          <button name="delete" type="submit">Delete</button>
-          <button name="delete_all" type="submit">Delete Everything</button>
-      </form>
+      <!</form>
       <p></p>
       <p>-----Names-----</p>
 
       <?php
       if ($allselect->num_rows > 0) {
-        $a = 0;
+        $a = 0; ?>
+        <!<form action="index.php" method="post">
+        <?php
         while($row = $allselect->fetch_assoc()) { ?>
-          <form action="index.php" method="post">
             <input type="radio" name="selectname" value=<?php ('$a+1') ?>>
             <?php echo $row["Name"]. "<br>"; ?>
-          </form>
+
       <?php  } ?>
       <p></p>
       <p></p>
-      <form action="index.php" method="post">
         <input type="text" name="newname">
         <button name="update" type="submit">Update</button>
+        <button name="delete" type="submit">Delete</button>
+        <button name="delete_all" type="submit">Delete Everything</button>
       </form>
       <?php
       }
