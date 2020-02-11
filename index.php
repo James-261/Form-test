@@ -60,6 +60,10 @@ try {
     if ($_POST['newname'] == '') {
       throw new Exception('Please enter a name');
     }
+    
+    if ($_POST['name'] == '') {
+      throw new Exception('Please enter a name');
+    }
 
     if (! $error) {
       if (nameAlreadyExists($conn, $newname)) {
@@ -145,14 +149,12 @@ $prettyTime = date("H:i");
       <form action="index.php" method="post">
           Name: <input type="text" name="name" value="<?= $name ?>">
           <button name="create" type="submit">Create</button>
-      <!</form>
       <p></p>
       <p>-----Names-----</p>
 
       <?php
       if ($allselect->num_rows > 0) {
         $a = 0; ?>
-        <!<form action="index.php" method="post">
         <?php
         while($row = $allselect->fetch_assoc()) { ?>
             <input type="radio" name="selectname" value=<?php ('$a+1') ?>>
