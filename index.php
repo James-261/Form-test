@@ -77,7 +77,7 @@ try {
           $conn->real_escape_string($newname),
           $conn->real_escape_string($selectname)
         );
-        
+
           if ($conn->query($sql_update) === TRUE) {
                 $successful = true;
             } else {
@@ -140,10 +140,7 @@ $Time = date("H:i");
   </head>
   <body>
       Time: <?= $Time ?>
-      <h1>DEBUG</h1>
-      <pre>
-        <?= print_r($_REQUEST, true); ?>
-      </pre>
+      <!Debug goes here >
       <h2>Form Test</h2>
       <?php if ($error !== null) { ?>
         <div style="color:red">
@@ -178,3 +175,12 @@ $Time = date("H:i");
       ?>
     </body>
 </html>
+
+
+
+<?php
+//<h1>DEBUG</h1>
+//<pre>
+//  <?= print_r($_REQUEST, true); ?><?php
+//</pre>
+?>
