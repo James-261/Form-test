@@ -36,16 +36,16 @@ try {
   }
 
   if (isset($_POST['delete'])) {
-      if (isset($_POST['name'])) {
+      if (isset($_POST['selectname'])) {
     } else {
       throw new Exception('Please select a name');
     }
 
     if (! $error) {
-      if (nameAlreadyExists($conn, $name)) {
+      if (nameAlreadyExists($conn, $selectname)) {
         $sql_delete = sprintf(
           "DELETE FROM Names WHERE Name = '%s'"
-          ,$conn->real_escape_string($name)
+          ,$conn->real_escape_string($selectname)
         );
         if ($conn->query($sql_delete) === TRUE) {
             $successful = true;
