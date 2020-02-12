@@ -73,8 +73,11 @@ try {
           throw new Exception('Name Already In Database');
       } else {
         $sql_update = sprintf(
-          "UPDATE Names SET Name=('$newname') WHERE Name='$selectname'"
+          "UPDATE Names SET Name=('%s') WHERE Name='%s'",
+          $conn->real_escape_string($newname),
+          $conn->real_escape_string($selectname)
         );
+        
           if ($conn->query($sql_update) === TRUE) {
                 $successful = true;
             } else {
