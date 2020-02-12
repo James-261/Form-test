@@ -140,7 +140,7 @@ $Time = date("H:i");
   </head>
   <body>
       Time: <?= $Time ?>
-      <!Debug goes here >
+      <!--Debug goes here -->
       <h2>Form Test</h2>
       <?php if ($error !== null) { ?>
         <div style="color:red">
