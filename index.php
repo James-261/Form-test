@@ -22,8 +22,9 @@ try {
      throw new Exception("Connection failed: " . $conn->connect_error);
   }
 
-  $name = $_POST["name"];
-  $newname = $_POST["newname"];
+  $name = ( isset($_POST["name"]) ? $_POST['name'] : null);
+  $newname = ( isset($_POST["newname"]) ? $_POST['newname'] : null);
+  $selectname = ( isset($_POST["selectname"]) ? $_POST['selectname'] : null );
   $sql_delete_all = "DELETE FROM Names";
 
   if (isset($_POST['delete_all'])) {
@@ -35,7 +36,8 @@ try {
   }
 
   if (isset($_POST['delete'])) {
-    if ($_POST['selectname'] == '') {
+      if (isset($_POST['name'])) {
+    } else {
       throw new Exception('Please select a name');
     }
 
@@ -60,9 +62,10 @@ try {
     if ($_POST['newname'] == '') {
       throw new Exception('Please enter a name');
     }
-    
-    if ($_POST['name'] == '') {
-      throw new Exception('Please enter a name');
+
+    if ($_POST['selectname']) {
+    } else {
+        throw new Exception('Please select a name');
     }
 
     if (! $error) {
@@ -70,7 +73,7 @@ try {
           throw new Exception('Name Already In Database');
       } else {
         $sql_update = sprintf(
-          "UPDATE Names SET Name=('$newname') WHERE Name='$name'"
+          "UPDATE Names SET Name=('$newname') WHERE Name='$selectname'"
         );
           if ($conn->query($sql_update) === TRUE) {
                 $successful = true;
@@ -100,9 +103,7 @@ try {
                 $successful = true;
             } else {
                 throw new Exception("Error: " . $sql_insert . "<br>" . $conn->error);
-
             }
-
       }
     }
   }
@@ -126,7 +127,7 @@ function nameAlreadyExists($conn, $n)
 $select = "SELECT * FROM Names";
 $allselect = $conn->query($select);
 $conn->close();
-$prettyTime = date("H:i");
+$Time = date("H:i");
 
 
 ?>
@@ -135,7 +136,7 @@ $prettyTime = date("H:i");
   <head>
   </head>
   <body>
-      Time: <?= $prettyTime ?>
+      Time: <?= $Time ?>
       <h1>DEBUG</h1>
       <pre>
         <?= print_r($_REQUEST, true); ?>
@@ -157,7 +158,8 @@ $prettyTime = date("H:i");
         $a = 0; ?>
         <?php
         while($row = $allselect->fetch_assoc()) { ?>
-            <input type="radio" name="selectname" value=<?php ('$a+1') ?>>
+
+            <input type="radio" name="selectname" value=<?php echo $row["Name"] ?>>
             <?php echo $row["Name"]. "<br>"; ?>
 
       <?php  } ?>
