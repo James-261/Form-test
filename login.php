@@ -73,7 +73,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     $username_err = "No account found with that username.";
                 }
             } else{
-                echo "reload page";
+                echo "Reload page";
             }
         }
 
