@@ -96,16 +96,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" autocomplete="off">
            <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
                <label>Username</label>
-               <input type="text" name="username" class="form-control" size="25" value="<?php echo $username; ?>">
+               <input id="text" type="text" name="username" class="form-control" size="25" value="<?php echo $username; ?>">
                <span class="help-block"><?php echo $username_err; ?></span>
            </div>
            <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
                <label>Password</label>
-               <input type="password" name="password" class="form-control" size="25">
+               <input id="text" type="password" name="password" class="form-control" size="25">
                <span class="help-block"><?php echo $password_err; ?></span>
            </div>
            <div class="form-group">
-               <input type="submit" class="btn btn-primary" value="Login">
+               <input type="submit" class="btn btn-primary" value="Login" id="sumbit">
            </div>
        </form>
        <a href="register.php">Register</a>
