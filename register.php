@@ -30,7 +30,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     $username = trim($_POST["username"]);
                 }
             } else{
-                echo "reload page";
+                echo "Reload page";
             }
         }
 
