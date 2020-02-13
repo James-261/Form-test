@@ -91,7 +91,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <html lang="en">
 <?php include 'header.php'; ?>
 <body>
-   <div class="wrapper">
+   <div class='box grey'>
        <h2>Login</h2>
        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
            <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
@@ -107,8 +107,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
            <div class="form-group">
                <input type="submit" class="btn btn-primary" value="Login">
            </div>
-           <p><a href="register.php">Register here</a>.</p>
        </form>
+       <a href="register.php">Register</a>
    </div>
 </body>
 </html>
