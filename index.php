@@ -143,7 +143,7 @@ $conn->close();
           <?= $error ?>
         </div>
       <?php } ?>
-      <form action="index.php" method="post">
+      <form action="index.php" method="post" autocomplete="off">
           <input type="text" name="name" value="">  <!--<?= $name ?>-->
           <button name="create" type="submit">Create</button>
       <p></p>

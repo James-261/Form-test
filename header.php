@@ -6,8 +6,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <style type="text/css">
         body {font: 14px sans-serif; text-align: center; background: grey;}
-        h2 {padding-top: 0px; font-size: 40px;}
-        .box {width: 500px; border: 15px solid #A9A9A9; padding: 50px; margin: auto; margin-top: 150px; clear: both;}
+        h2 {padding-top: 0px; font-size: 40px; font-family: Monospace; font-weight: lighter;}
+        .box {width: 500px; border: 15px solid #A9A9A9; padding: 50px; margin: auto; margin-top: 150px; clear: both; border-radius: 50px;}
         .grey {background-color: #DCDCDC;}
         .time {float: right; padding-top: 14px; font-size: 20px; padding-left: 1500px;}
     </style>
