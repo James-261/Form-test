@@ -28,4 +28,13 @@
   </div>
 </nav>
 <body>
+  <script>
+  var input = document.getElementById("text");
+  input.addEventListener("keyup", function(event) {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      document.getElementById("sumbit").click();
+    }
+  });
+</script>
 </body>
