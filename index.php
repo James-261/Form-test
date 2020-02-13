@@ -130,16 +130,12 @@ function nameAlreadyExists($conn, $n)
 $select = "SELECT * FROM Names";
 $allselect = $conn->query($select);
 $conn->close();
-$Time = date("H:i");
-
 
 ?>
 <!DOCTYPE HTML>
-<html lang="en">
-<head>
-</head>
+<?php include 'header.php'; ?>
   <body>
-      Time: <?= $Time ?>
+    <div class="box grey">
       <!--Debug goes here -->
       <h2>Form Test</h2>
       <?php if ($error !== null) { ?>
@@ -173,7 +169,8 @@ $Time = date("H:i");
       <?php
       }
       ?>
-    </body>
+    </div>
+  </body>
 </html>
 
 
