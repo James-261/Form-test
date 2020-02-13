@@ -135,9 +135,9 @@ $Time = date("H:i");
 
 ?>
 <!DOCTYPE HTML>
-<html>
-  <head>
-  </head>
+<html lang="en">
+<head>
+</head>
   <body>
       Time: <?= $Time ?>
       <!--Debug goes here -->
@@ -148,7 +148,7 @@ $Time = date("H:i");
         </div>
       <?php } ?>
       <form action="index.php" method="post">
-          Name: <input type="text" name="name" value="">  <!--<?= $name ?>-->
+          <input type="text" name="name" value="">  <!--<?= $name ?>-->
           <button name="create" type="submit">Create</button>
       <p></p>
       <p>-----Names-----</p>
