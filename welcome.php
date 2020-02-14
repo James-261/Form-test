@@ -44,7 +44,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <body>
     <div class="box grey">
         <h1>Welcome, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b></h1>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>  <!-- Probably should use padding-->
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         <a href="logout.php" class="btn btn-danger">Log Out</a>
     </div>
