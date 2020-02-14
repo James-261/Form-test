@@ -7,20 +7,51 @@ class Fruit {
   public $color;
 
   function __construct($name, $color) {
-    $this->name = $name;
-    $this->color = $color;
+    $this->setName($name);
+    $this->setColor($color);
+  }
+
+  function getColor() {
+    return $this->color;
+  }
+
+  function getName() {
+      return $this->name;
+    }
+
+  protected function setName(String $name) {
+      $this->name = $name;
+  }
+
+  protected function setColor(String $color) {
+      $this->color = $color;
   }
 }
 
 class Strawberry extends Fruit {
-  public function message() {
-    echo "hi" ;
+
+  function __construct($name, $color) {
+    $this->setName($name);
+    $this->setColor($color);
+
+    if (strtolower($color) !== 'red') {
+      throw new Exception("Strawberries must be red");
+    }
   }
+
+  public function getDetails() {
+    echo "Color: ".$this->getColor()." name:".$this->getName();
+  }
+
 }
 
-$apple = new Fruit("Apple");
+// $apple = new Fruit("Apple", "Green");
 $strawberry = new Strawberry("Strawberry", "Red");
-$strawberry->message();
+// $strawberry->getDetails();
+// $strawberry->setName("Cheese");
+// $strawberry->setColor("Orange");
+// $strawberry->getDetails();
+
 
 
 
