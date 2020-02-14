@@ -25,7 +25,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $stmt->store_result();
 
                 if($stmt->num_rows == 1){
-                    $username_err = "Username is already taken.";
+                    $username_err = "Please enter a valid username.";
                 } else{
                     $username = trim($_POST["username"]);
                 }
